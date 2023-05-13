@@ -1,1 +1,1 @@
-# 👋 Hi there
+# course-notes
