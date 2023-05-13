@@ -3,7 +3,9 @@
 
 <head>
     <title></title>
-    <meta name="description" content="">
+    <meta name="description">
+    <meta property="og:image:alt">
+    <meta property="og:description">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body,
@@ -30,8 +32,11 @@
 <script>
     const params = new URLSearchParams(document.location.search)
     const file_name = params.get("file").replace('.pdf', '')
-    document.title = file_name.replaceAll(/[-_]/g, ' ')
-    document.querySelector('meta[name="description"]').setAttribute("content", file_name.replace(/[-_]/g, ' '))
+    const transformed = file_name.replaceAll(/[-_]/g, ' ')
+    document.title = transformed
+    document.querySelector('meta[name="description"]').setAttribute("content", transformed)
+    document.querySelector('meta[property="og:image:alt"]').setAttribute("content", transformed)
+    document.querySelector('meta[property="og:description"]').setAttribute("content", transformed)
     // document.getElementsByTagName('meta')["description"].content = file_name.replace(/[\-_]/, '');
     // document.head.querySelector('meta[name="description"]').content = file_name.replaceAll(/[-_]/g, ' ')
     document.querySelector('#file_obj').setAttribute('data', `./${file_name}.pdf`)
