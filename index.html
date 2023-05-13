@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body,
+        object,
+        html {
+            height: 100vh;
+            margin: 0;
+            width: 100%;
+            display: block;
+        }
+
+        object {
+            position: fixed;
+        }
+    </style>
+</head>
+
+<body>
+    <object id="file_obj" data="" type="application/pdf" width="300" height="200">
+        <p>Unable to display PDF file <a id="file_download_link" href="">Download</a> instead
+        </p>
+    </object>
+</body>
+<script>
+    const params = new URLSearchParams(document.location.search)
+    const file_name = params.get("file").replace('.pdf', '')
+    document.title = file_name.replaceAll(/[-_]/g, ' ')
+    document.querySelector('meta[name="description"]').setAttribute("content", file_name.replace(/[-_]/g, ' '))
+    // document.getElementsByTagName('meta')["description"].content = file_name.replace(/[\-_]/, '');
+    // document.head.querySelector('meta[name="description"]').content = file_name.replaceAll(/[-_]/g, ' ')
+    document.querySelector('#file_obj').setAttribute('data', `./${file_name}.pdf`)
+    document.querySelector('#file_download_link').setAttribute('href', `./${file_name}.pdf`)
+
+</script>
+
+</html>
