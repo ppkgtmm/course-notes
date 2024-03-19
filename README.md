@@ -1,3 +1,3 @@
-# course notes
+# 📝 course notes
 
-Repo created to consolidate notes from online courses I attended
+consolidatation of notes from online courses I have attended
